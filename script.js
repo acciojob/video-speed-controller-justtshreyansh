@@ -42,24 +42,18 @@ function scrub(e) {
   video.currentTime = scrubTime;
 }
 
+// Event listeners
 video.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress);
 
 toggle.addEventListener('click', togglePlay);
-
 skipButtons.forEach(button => button.addEventListener('click', skip));
-
 volumeSlider.addEventListener('input', handleVolumeChange);
 playbackSpeedSlider.addEventListener('input', handlePlaybackSpeedChange);
 
 progress.addEventListener('click', scrub);
-
 progress.addEventListener('mousedown', () => isMouseDown = true);
 progress.addEventListener('mouseup', () => isMouseDown = false);
-progress.addEventListener('mousemove', e => {
-  if (isMouseDown) {
-    scrub(e);
-  }
-});
+progress.addEventListener('mousemove', e => isMouseDown && scrub(e));
