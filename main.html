@@ -5,7 +5,6 @@
   <title>Custom Video Player</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Minimal styles for demonstration */
     .player {
       max-width: 765px;
       margin: 20px auto;
@@ -15,7 +14,7 @@
       overflow: hidden;
       font-family: Arial, sans-serif;
     }
-    .viewer {
+    .player__video {
       width: 100%;
       display: block;
       background: black;
@@ -66,7 +65,7 @@
 <body>
 
   <div class="player">
-    <video class="viewer" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+    <video class="player__video" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
 
     <div class="controls">
       <button class="player__button toggle" title="Toggle Play">►</button>
