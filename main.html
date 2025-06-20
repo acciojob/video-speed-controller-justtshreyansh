@@ -1,21 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Video Speed Scrubber</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>Custom Video Player</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Minimal styles for demonstration */
+    .player {
+      max-width: 765px;
+      margin: 20px auto;
+      background: #333;
+      color: white;
+      border-radius: 5px;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    .viewer {
+      width: 100%;
+      display: block;
+      background: black;
+    }
+    .controls {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      gap: 10px;
+      background: #222;
+      flex-wrap: wrap;
+    }
+    .player__button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      user-select: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .player__button:hover {
+      background-color: #444;
+    }
+    .progress {
+      flex: 1;
+      height: 8px;
+      background: #555;
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+      margin: 0 10px;
+    }
+    .progress__filled {
+      width: 0%;
+      height: 100%;
+      background: #f50;
+      border-radius: 4px 0 0 4px;
+      transition: width 0.1s linear;
+    }
+    input[type=range] {
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
-  <div class="wrapper">
-    <video class="flex" width="765" height="430" src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" controls></video>
-    <div class="speed">
-      <div class="speed-bar">1×</div>
+  <div class="player">
+    <video class="viewer" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+
+    <div class="controls">
+      <button class="player__button toggle" title="Toggle Play">►</button>
+
+      <button class="player__button" data-skip="-10">« 10s</button>
+      <button class="player__button" data-skip="25">25s »</button>
+
+      <input type="range" name="volume" class="volume" min="0" max="1" step="0.05" value="1" title="Volume" />
+      <input type="range" name="playbackRate" class="playbackSpeed" min="0.5" max="2" step="0.1" value="1" title="Playback Speed" />
+
+      <div class="progress">
+        <div class="progress__filled"></div>
+      </div>
     </div>
   </div>
 
-<script  src="./script.js">
-  //Your code goes here
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
